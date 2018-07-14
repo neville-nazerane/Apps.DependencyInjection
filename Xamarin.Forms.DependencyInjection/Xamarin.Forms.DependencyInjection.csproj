@@ -10,7 +10,7 @@
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      
+      - static services setup
     </PackageReleaseNotes>
     <PackageTags>netstandard Xamarin.Forms DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
     <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>
