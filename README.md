@@ -1,2 +1,2 @@
 # Apps.DependencyInjection
-Dependency injection detected features for apps
+Dependency injection dedicated features for apps
