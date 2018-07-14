@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Xamarin.Forms.DependencyInjection</PackageId>
+    <PackageVersion>1.0.0-beta1</PackageVersion>
+    <Authors>Neville Nazerane</Authors>
+    <Description>
+      Dependency injection dedicated features for Xamarin.Forms using Microsoft.Extensions.DependencyInjection
+    </Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>
+      
+    </PackageReleaseNotes>
+    <PackageTags>netstandard Xamarin.Forms DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
+    <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>
+    <RootNamespace>Xamarin.Forms.DependencyInjection</RootNamespace>
+    <AssemblyName>Xamarin.Forms.DependencyInjection</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Apps.DependencyInjection" Version="1.0.0-beta1" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.637273" />
+  </ItemGroup>
+
+</Project>
