@@ -1,7 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Apps.DependencyInjection</PackageId>
+    <PackageVersion>1.0.0-beta1</PackageVersion>
+    <Authors>Neville Nazerane</Authors>
+    <Description>
+      Dependency injection dedicated features for apps using Microsoft.Extensions.DependencyInjection
+    </Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>
+      - IInitializer allows adding lamda that can be used for initialization
+      - Data listener objects that allows data types with configured OnSet
+      - Allows initializing an onLoad for data listeners to be executed if OnSet is set
+      - ListenersManager to contain and manage data listeners
+    </PackageReleaseNotes>
+    <PackageTags>netstandard DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
+    <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>
+    <RootNamespace>Apps.DependencyInjection</RootNamespace>
+    <AssemblyName>Apps.DependencyInjection</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
