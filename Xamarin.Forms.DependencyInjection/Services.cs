@@ -37,6 +37,7 @@ namespace Xamarin.Forms.DependencyInjection
                 IServiceCollection services = new ServiceCollection();
                 Configuration.AdditionalServices(services);
                 Configuration.ConfigureServices(services);
+                Configuration.OnCreated(provider);
                 provider = services.BuildServiceProvider();
             }
         }
@@ -63,7 +64,7 @@ namespace Xamarin.Forms.DependencyInjection
             var page = scopeProvider.GetService<TPage>();
             if (await Configuration.OnPageLoading(page))
             {
-                scopeProvider.GetService<IInitializer>().Init();
+                Configuration.ListenerConfiguration.Initialize(scopeProvider);
                 if (selfNavigate && navigation != null) await navigation.PushAsync(page);
             }
             else currentProvider = oldProvider;

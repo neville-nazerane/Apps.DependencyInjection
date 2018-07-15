@@ -12,6 +12,8 @@ namespace Xamarin.Forms.DependencyInjection
 
         protected virtual bool EnableAutoPageAdd => true;
 
+        internal ListenerConfiguration ListenerConfiguration { get; set; }
+
         internal void AdditionalServices(IServiceCollection services)
         {
             if (EnableAutoPageAdd)
@@ -19,11 +21,17 @@ namespace Xamarin.Forms.DependencyInjection
                 var pages = GetType().Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Page)) && !t.IsAbstract);
                 foreach (var page in pages) services.AddScoped(page);
             }
+            ListenerConfiguration = new ListenerConfiguration(services);
+            ConfigureListeners(ListenerConfiguration);
         }
 
+        public virtual void ConfigureListeners(ListenerConfiguration configuration) { }
+        
         public abstract void ConfigureServices(IServiceCollection services);
         
         public virtual Task<bool> OnPageLoading(Page page) => Task.FromResult(true);
+
+        public virtual void OnCreated(IServiceProvider provider) { }
 
     }
 }
