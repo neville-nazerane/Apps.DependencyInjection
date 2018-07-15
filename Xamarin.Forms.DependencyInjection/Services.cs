@@ -16,15 +16,15 @@ namespace Xamarin.Forms.DependencyInjection
         static INavigation navigation;
 
         static ServiceConfiguration _configuration;
-        static Page _navigationPage;
+        static Page _navigationPage = new NavigationPage();
 
         public static Page NavigationPage
         {
-            get => _navigationPage ?? (NavigationPage = new NavigationPage());
+            get => _navigationPage;
             set
             {
                 _navigationPage = value;
-                navigation = value.Navigation;
+                if (value != null) navigation = value.Navigation;
             }
         }
 
