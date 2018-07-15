@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xamarin.Forms.DependencyInjection</PackageId>
-    <PackageVersion>1.0.0-beta2_1</PackageVersion>
+    <PackageVersion>1.0.0-beta2-fix-1</PackageVersion>
     <Authors>Neville Nazerane</Authors>
     <Description>
       Dependency injection dedicated features for Xamarin.Forms using Microsoft.Extensions.DependencyInjection
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      - fetching all classes from current assembly
+      - Fetching all classes from current assembly
     </PackageReleaseNotes>
     <PackageTags>netstandard Xamarin.Forms DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
     <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>
