@@ -11,47 +11,63 @@ namespace Xamarin.Forms.DependencyInjection
     public static class Services
     {
 
-        static IServiceProvider Provider { get; set; }
+        static IServiceProvider provider;
+        static IServiceProvider currentProvider;
+        static INavigation navigation;
 
-        public static Func<Page, Task<bool>> OnPageLoading { private get; set; }
+        static ServiceConfiguration _configuration;
+        static Page _navigationPage;
 
-        public static void ConfigureServices(Action<IServiceCollection> config)
+        public static Page NavigationPage
         {
-            var services = new ServiceCollection();
-            config(services);
-            Provider = services.BuildServiceProvider();
+            get => _navigationPage ?? (NavigationPage = new NavigationPage());
+            set
+            {
+                _navigationPage = value;
+                navigation = value.Navigation;
+            }
         }
 
-        static IServiceProvider currentProvider;
+        public static ServiceConfiguration Configuration
+        {
+            private get => _configuration;
+            set
+            {
+                _configuration = value;
+                IServiceCollection services = new ServiceCollection();
+                Configuration.AdditionalServices(services);
+                Configuration.ConfigureServices(services);
+                provider = services.BuildServiceProvider();
+            }
+        }
 
         public static TService Get<TService>()
         {
-            if (currentProvider == null) return Provider.GetService<TService>();
+            if (currentProvider == null) return provider.GetService<TService>();
             else return currentProvider.GetService<TService>();
         }
 
-        static INavigation navigation;
-
         public static void SetNavigation(INavigation navigation)
-            => Services.navigation = navigation;
+        {
+            Services.navigation = navigation;
+            NavigationPage = null;
+        }
 
-        public static async Task<TPage> NavigateAsync<TPage>()
+        public static async Task<TPage> NavigateAsync<TPage>(bool selfNavigate = true)
             where TPage : Page
         {
-            var scope = Provider.CreateScope();
+            var scope = provider.CreateScope();
             var scopeProvider = scope.ServiceProvider;
             var oldProvider = currentProvider;
             currentProvider = scopeProvider;
             var page = scopeProvider.GetService<TPage>();
-            if (OnPageLoading != null && !(await OnPageLoading.Invoke(page)))
-                currentProvider = oldProvider;
-            else
+            if (await Configuration.OnPageLoading(page))
             {
                 scopeProvider.GetService<IInitializer>().Init();
-                if (navigation != null) await navigation.PushAsync(page);
+                if (selfNavigate && navigation != null) await navigation.PushAsync(page);
             }
-
-            return page; 
+            else currentProvider = oldProvider;
+            return page;
         }
 
 
