@@ -11,19 +11,14 @@ namespace Xamarin.Forms.DependencyInjection
     {
 
         protected virtual bool EnableAutoPageAdd => true;
-        
-        public ServiceConfiguration()
+
+        internal void AdditionalServices(IServiceCollection services)
         {
             if (EnableAutoPageAdd)
             {
                 var pages = GetType().Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Page)) && !t.IsAbstract);
-                foreach (var page in pages) ;
+                foreach (var page in pages) services.AddScoped(page);
             }
-        }
-
-        internal void AdditionalServices(IServiceCollection services)
-        {
-
         }
 
         public abstract void ConfigureServices(IServiceCollection services);
