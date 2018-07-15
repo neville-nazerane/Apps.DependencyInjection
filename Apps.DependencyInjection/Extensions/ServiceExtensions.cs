@@ -8,12 +8,31 @@ namespace Apps.DependencyInjection.Extensions
     public static class ServiceExtensions
     {
 
-        public static IServiceCollection AddInitializer(this IServiceCollection services)
-            => services.AddSingleton<IInitializer, Initializer>();
+        static IServiceCollection AddDataInit(this IServiceCollection services)
+            => services.AddSingleton(typeof(IDataInitializer<>), typeof(DataInitializer<>));
 
-        public static IServiceCollection AddListenersManager<TManager>(this IServiceCollection services)
+        public static IServiceCollection AddListenersManager<TManager>(
+                                                this IServiceCollection services,
+                                                ServiceLifetime serviceLifetime = ServiceLifetime.Scoped
+            )
             where TManager : ListenersManager
-            => services.AddInitializer()
-                         .AddScoped<TManager>();
+        {
+            services
+                .AddDataInit()
+                .Add(new ServiceDescriptor(typeof(TManager), typeof(TManager), serviceLifetime));
+            return services;
+        }
+
+        public static IServiceCollection AddListenersManager<TService, TImplementation>(
+                                        this IServiceCollection services,
+                                        ServiceLifetime serviceLifetime = ServiceLifetime.Scoped
+        )
+            where TImplementation : ListenersManager, TService
+        {
+                services
+                    .AddDataInit()
+                    .Add(new ServiceDescriptor(typeof(TService), typeof(TImplementation), serviceLifetime));
+                return services;
+            }
     }
 }

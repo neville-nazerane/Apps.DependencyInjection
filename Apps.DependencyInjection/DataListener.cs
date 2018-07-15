@@ -11,8 +11,6 @@ namespace Apps.DependencyInjection
         private TData _data;
         Func<Task<TData>> getDefault;
 
-        internal IInitializer Initializer { get; set; }
-
         internal DataListener()
         {
 
@@ -32,13 +30,7 @@ namespace Apps.DependencyInjection
         /// 
         /// </summary>
         /// <param name="getDefault"></param>
-        /// <param name="addToInitializer"></param>
-        public void SetDefaultAsync(Func<Task<TData>> getDefault, bool addToInitializer = true)
-        {
-            this.getDefault = getDefault;
-            if (addToInitializer)
-                Initializer.Add(async () => await LoadIfConfiguredAsync());
-        }
+        public void SetDefault(Func<Task<TData>> getDefault) => this.getDefault = getDefault;
 
         /// <summary>
         /// Loads if a default delegate was set using the 
@@ -76,11 +68,10 @@ namespace Apps.DependencyInjection
 
         #region implicit_operators 
 
-        public static implicit operator TData(DataListener<TData> dataListener)
-            => dataListener.Data;
+        public static implicit operator TData(DataListener<TData> dataListener) => dataListener.Data;
 
         public static implicit operator DataListener<TData>(DataListenerImplicitBuilder builder) 
-            => new DataListener<TData> { Initializer = builder.Initializer };
+            => new DataListener<TData> {  };
 
         #endregion
 
@@ -88,7 +79,6 @@ namespace Apps.DependencyInjection
 
     public class DataListenerImplicitBuilder {
 
-        internal IInitializer Initializer { get; set; }
 
         internal DataListenerImplicitBuilder()
         {

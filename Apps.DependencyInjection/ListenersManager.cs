@@ -7,17 +7,14 @@ namespace Apps.DependencyInjection
     public class ListenersManager
     {
 
-        
-        private readonly IInitializer initializer;
-
-        public ListenersManager(IInitializer initializer)
+        public ListenersManager()
         {
-            this.initializer = initializer;
+
         }
 
         protected DataListenerImplicitBuilder Build()
             => new DataListenerImplicitBuilder {
-                Initializer = initializer
+
             };
 
     }
