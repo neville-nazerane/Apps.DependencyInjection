@@ -8,14 +8,9 @@ namespace TestApps.Helpers
     class Listeners : ListenersManager
     {
 
-        public DataListener<string> MyData;
+        public DataListener<string> MyData { get; set; }
 
-        public DataListener<string> ToShow;
+        public DataListener<string> ToShow { get; set; }
 
-        public Listeners(IInitializer initializer) : base(initializer)
-        {
-            MyData = Build();
-            ToShow = Build();
-        }
     }
 }
