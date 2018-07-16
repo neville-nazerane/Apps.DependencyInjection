@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Apps.DependencyInjection</PackageId>
-    <PackageVersion>1.0.0-beta2</PackageVersion>
+    <PackageVersion>1.0.0-beta3</PackageVersion>
     <Authors>Neville Nazerane</Authors>
     <Description>
       Dependency injection dedicated features for apps using Microsoft.Extensions.DependencyInjection
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      - Initializer replaced with generic type
+      - Dynamic data initializer
     </PackageReleaseNotes>
     <PackageTags>netstandard DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
     <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>
