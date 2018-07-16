@@ -37,8 +37,8 @@ namespace Xamarin.Forms.DependencyInjection
                 IServiceCollection services = new ServiceCollection();
                 Configuration.AdditionalServices(services);
                 Configuration.ConfigureServices(services);
-                Configuration.OnCreated(provider);
                 provider = services.BuildServiceProvider();
+                Configuration.OnCreated(provider);
             }
         }
 
