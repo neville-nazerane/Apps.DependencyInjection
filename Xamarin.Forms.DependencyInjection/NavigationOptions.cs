@@ -10,7 +10,7 @@ namespace Xamarin.Forms.DependencyInjection
 
         public bool SelfNavigate { get; set; }
 
-        public Action<IServiceProvider> Passable { get; set; }
+        internal Action<IServiceProvider> Passable { get; set; }
 
         public void PassData<TData>(TData data)
         {
@@ -19,7 +19,7 @@ namespace Xamarin.Forms.DependencyInjection
 
         internal NavigationOptions()
         {
-
+            SelfNavigate = true;
         }
 
     }
