@@ -54,22 +54,28 @@ namespace Xamarin.Forms.DependencyInjection
             NavigationPage = null;
         }
 
-        public static async Task<TPage> NavigateAsync<TPage>(bool selfNavigate = true)
+        public static async Task<TPage> NavigateAsync<TPage>(Action<NavigationOptions> options = null)
             where TPage : Page
         {
+            var opts = new NavigationOptions();
+            options?.Invoke(opts);
+
             var scope = provider.CreateScope();
             var scopeProvider = scope.ServiceProvider;
             var oldProvider = currentProvider;
             currentProvider = scopeProvider;
+            opts.Passable?.Invoke(scopeProvider);
             var page = scopeProvider.GetService<TPage>();
             if (await Configuration.OnPageLoading(page))
             {
                 Configuration.ListenerConfiguration.Initialize(scopeProvider);
-                if (selfNavigate && navigation != null) await navigation.PushAsync(page);
+                if (opts.SelfNavigate && navigation != null) await navigation.PushAsync(page);
             }
             else currentProvider = oldProvider;
             return page;
         }
+
+
 
 
     }

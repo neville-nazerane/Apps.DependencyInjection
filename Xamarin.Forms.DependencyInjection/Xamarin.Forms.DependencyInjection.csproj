@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xamarin.Forms.DependencyInjection</PackageId>
-    <PackageVersion>1.0.0-beta3-fix-1</PackageVersion>
+    <PackageVersion>1.0.0-beta4</PackageVersion>
     <Authors>Neville Nazerane</Authors>
     <Description>
       Dependency injection dedicated features for Xamarin.Forms using Microsoft.Extensions.DependencyInjection
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      - Fixed null pointer on create
+      - Navigation options setup
     </PackageReleaseNotes>
     <PackageTags>netstandard Xamarin.Forms DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
     <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>

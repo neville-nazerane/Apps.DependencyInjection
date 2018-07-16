@@ -16,6 +16,9 @@ namespace Xamarin.Forms.DependencyInjection
 
         internal void AdditionalServices(IServiceCollection services)
         {
+
+            services.AddScoped(typeof(Passable<>));
+
             if (EnableAutoPageAdd)
             {
                 var pages = GetType().Assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Page)) && !t.IsAbstract);
