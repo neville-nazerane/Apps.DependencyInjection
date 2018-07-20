@@ -3,15 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xamarin.Forms.DependencyInjection</PackageId>
-    <PackageVersion>1.0.0-beta4-fix-1</PackageVersion>
+    <PackageVersion>1.0.0-beta5</PackageVersion>
     <Authors>Neville Nazerane</Authors>
     <Description>
       Dependency injection dedicated features for Xamarin.Forms using Microsoft.Extensions.DependencyInjection
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      - Hid lamda under navigation options
-      - Fixed self navigation
+      - Added overload for to directly pass Passable during navigatio
     </PackageReleaseNotes>
     <PackageTags>netstandard Xamarin.Forms DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
     <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>
