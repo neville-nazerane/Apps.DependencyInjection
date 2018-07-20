@@ -10,7 +10,7 @@
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      - Added overload for to directly pass Passable during navigatio
+      - Added overload for to directly pass Passable during navigation
     </PackageReleaseNotes>
     <PackageTags>netstandard Xamarin.Forms DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
     <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>
