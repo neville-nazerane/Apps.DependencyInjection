@@ -75,8 +75,15 @@ namespace Xamarin.Forms.DependencyInjection
             return page;
         }
 
+        //public static async Task<TPage> NavigateAsync<TPage, TData>(TData passedData, Action<NavigationOptions> options = null)
+        //    where TPage : Page, IAccepting<TData>
+        //{
+        //    Action<NavigationOptions> opts = o => {
 
-
+        //        options?.Invoke(o);
+        //    };
+        //    var page = NavigateAsync<TPage>();
+        //}
 
     }
 }

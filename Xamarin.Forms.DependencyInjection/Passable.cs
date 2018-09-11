@@ -13,4 +13,12 @@ namespace Xamarin.Forms.DependencyInjection
             => passable.Data;
         
     }
+
+    public interface IAccepting<TData>
+    {
+
+        TData Passed { get; set; }
+
+    }
+
 }

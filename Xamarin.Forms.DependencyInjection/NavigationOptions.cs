@@ -12,10 +12,10 @@ namespace Xamarin.Forms.DependencyInjection
 
         internal Action<IServiceProvider> Passable { get; set; }
 
-        public void PassData<TData>(TData data) 
+        internal void PassData<TData>(TData data) 
             => Passable = p => p.GetService<Passable<TData>>().Data = data;
 
-        public void PassData<TData>(Passable<TData> passableData)
+        internal void PassData<TData>(Passable<TData> passableData)
             => PassData(passableData.Data);
 
         internal NavigationOptions()
