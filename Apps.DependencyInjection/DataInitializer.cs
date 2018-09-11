@@ -20,11 +20,11 @@ namespace Apps.DependencyInjection
 
         public void Add<TData> (
                 Func<TManager, DataListener<TData>> getData, 
-                Func<Task<TData>> getDefault, 
+                Func<TManager, Task<TData>> getDefault, 
                 bool autoInitialize = true
             )
         {
-            assigners.Add(m => getData(m).SetDefault(getDefault));
+            assigners.Add(m => getData(m).SetDefault(() => getDefault(m)));
             if (autoInitialize)
                 initializers.Add(async m => await getData(m).ReloadAsync());
         }

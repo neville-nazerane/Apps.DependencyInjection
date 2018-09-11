@@ -3,15 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Apps.DependencyInjection</PackageId>
-    <PackageVersion>1.0.0-beta4</PackageVersion>
+    <PackageVersion>1.0.0-beta5</PackageVersion>
     <Authors>Neville Nazerane</Authors>
     <Description>
       Dependency injection dedicated features for apps using Microsoft.Extensions.DependencyInjection
     </Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      - Added getter to data listener
-      - Renamed load to reload functions
+      - Added param for initializer Add function
     </PackageReleaseNotes>
     <PackageTags>netstandard DependencyInjection Microsoft.Extensions.DependencyInjection</PackageTags>
     <PackageProjectUrl>https://github.com/neville-nazerane/Apps.DependencyInjection</PackageProjectUrl>

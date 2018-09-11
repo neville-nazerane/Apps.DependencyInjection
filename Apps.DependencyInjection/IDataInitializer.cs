@@ -11,7 +11,7 @@ namespace Apps.DependencyInjection
 
         void Add<TData> (
                     Func<TManager, DataListener<TData>> getData,
-                    Func<Task<TData>> getDefault, 
+                    Func<TManager, Task<TData>> getDefault, 
                     bool autoInitialize = true
             );
 
