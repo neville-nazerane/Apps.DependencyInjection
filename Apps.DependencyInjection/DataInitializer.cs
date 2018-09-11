@@ -26,7 +26,7 @@ namespace Apps.DependencyInjection
         {
             assigners.Add(m => getData(m).SetDefault(getDefault));
             if (autoInitialize)
-                initializers.Add(async m => await getData(m).LoadAsync());
+                initializers.Add(async m => await getData(m).ReloadAsync());
         }
 
         public void Init(TManager manager)

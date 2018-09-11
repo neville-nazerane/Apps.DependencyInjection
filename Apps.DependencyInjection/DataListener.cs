@@ -21,10 +21,15 @@ namespace Apps.DependencyInjection
             set
             {
                 onSet = value;
-                if (Data != null) onSet(Data);
+                value?.Invoke(_data);
             }
         }
 
+        Func<TData, TData> onGet;
+        public Func<TData, TData> OnGet
+        {
+            set => onGet = value;
+        }
 
         /// <summary>
         /// 
@@ -36,7 +41,7 @@ namespace Apps.DependencyInjection
         /// Loads if a default delegate was set using the 
         /// SetDefault function
         /// </summary>
-        public async Task LoadAsync()
+        public async Task ReloadAsync()
         {
             if (getDefault != null) Set(await getDefault());
         }
@@ -44,14 +49,24 @@ namespace Apps.DependencyInjection
         /// <summary>
         /// Loads only if method setter is configured
         /// </summary>
-        public async Task LoadIfConfiguredAsync()
+        public async Task ReloadIfConfiguredAsync()
         {
-            if (IsConfigued) await LoadAsync();
+            if (IsConfigued) await ReloadAsync();
         }
 
         public bool IsConfigued => onSet != null;
 
-        public TData Data { get => _data; set => Set(value); }
+        public TData Data
+        {
+            get => Get(_data);
+            set => Set(value);
+        }
+
+        TData Get(TData data)
+        {
+            if (onGet == null) return _data;
+            else return onGet(_data);
+        }
 
         void Set(TData data)
         {
